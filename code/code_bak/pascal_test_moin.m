@@ -1,0 +1,44 @@
+function [ds_moin] = pascal_test_moin(model_selected,voc_test,relpos_patch_normal_selected,detection_thre)
+
+try
+    load('data/imgdata_VOC_test.mat', 'voc_test_detect');
+catch
+    [voc_test_detect] = run_detection_on(model_selected,voc_test);
+    save('data/imgdata_VOC_test.mat', 'voc_test_detect');
+end
+    
+    %detrespath = '/homes/grail/moinnabi/datasets/PASCALVOC/VOC2007/VOCdevkit/results/VOC2007/Main/%s_det_val_%s.txt';
+    %file_name = 'test-1';
+
+    %fid=fopen(sprintf(detrespath,file_name,'horse'),'w');
+    %detection_thre = 120;
+%     voc_test_detect_norm = normalize_matrix(
+%     vertcat(voc_detect{img}.scores{:});
+    
+    relpos_patch = relpos_patch_normal_selected;
+    voc_detect = voc_test_detect;
+    
+    for img=1:length(voc_detect)
+        bbox_detected = [];
+        score_detected = [];
+        relpos_patch_detected = [];
+        prt_ind = 1;
+
+        for prt = 1:length(voc_detect{1}.scores)%#patches
+            if voc_detect{img}.scores{prt} > detection_thre
+                bbox_detected{prt_ind} = voc_detect{img}.parts{prt};
+                score_detected(prt_ind) = voc_detect{img}.scores{prt};
+                relpos_patch_detected{prt_ind} = relpos_patch{prt};
+                prt_ind = prt_ind+1;
+            end
+        end
+        gtbox_detected = inv_relpos_p2gt(bbox_detected,relpos_patch_detected);
+
+        pred = vertcat(gtbox_detected{:});
+        score = score_detected';
+
+        ds_moin{img} = [pred,score];
+
+    end
+%     save(['data/',suffix,'.mat'],'ds_moin');
+end

@@ -1,0 +1,55 @@
+10
+
+dir
+1
+file:///projects/grail/santosh4/svnRepository/objectNgrams/trunk/code/other_codes
+file:///projects/grail/santosh4/svnRepository
+
+
+
+2013-12-10T22:24:11.880230Z
+1
+santosh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+f86be964-4e39-497d-9f55-53ad1cc991bd
+
+VOC9990
+dir
+
+bboxNonMaxSuppression
+dir
+
+svm_one_vs_all
+dir
+
+kmpp
+dir
+
+esvm
+dir
+
+graphviz
+dir
+
+voc-release5
+dir
+
+turkAnnotate_detection
+dir
+
+PASannotation
+dir
+

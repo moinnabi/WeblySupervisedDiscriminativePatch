@@ -1,0 +1,4 @@
+#!/bin/sh
+#PBS -e /dev/null -o /dev/null -N INTERACTIVE -l nodes=1:ppn=8
+pbsdsh $PBS_O_WORKDIR/reservenode.sh 
+

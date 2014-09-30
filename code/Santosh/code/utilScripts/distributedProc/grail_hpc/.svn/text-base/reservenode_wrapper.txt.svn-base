@@ -1,0 +1,2 @@
+
+qsub -S /bin/sh -e /dev/null -o /dev/null -N INTERACTIVE -pe orte 24 /projects/grail/santosh/objectNgrams/code/utilScripts/distributedProc/grail_hpc/reservenode.sh

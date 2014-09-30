@@ -1,0 +1,178 @@
+10
+
+dir
+1
+file:///projects/grail/santosh4/svnRepository/objectNgrams/trunk/code
+file:///projects/grail/santosh4/svnRepository
+
+
+
+2013-12-10T22:24:11.880230Z
+1
+santosh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+f86be964-4e39-497d-9f55-53ad1cc991bd
+
+jointTraining
+dir
+
+getResultsSummary
+dir
+
+imgClsPruning
+dir
+
+masterScript_ngrams.m
+file
+
+
+
+
+2013-12-10T22:27:12.620761Z
+217ad7c2e7a13c2d775db1b1dfe3b465
+2013-12-10T22:24:11.880230Z
+1
+santosh
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+28599
+
+searchNgramData
+dir
+
+utilScripts
+dir
+
+myDPM
+dir
+
+downloadNgramData
+dir
+
+downloadImages
+dir
+
+other_codes
+dir
+
+contextNexpertSel
+dir
+
+this_util
+dir
+
+displayNvis
+dir
+
+getSuperNgrams
+dir
+
+blah
+dir
+
+myaddpath.m
+file
+
+
+
+
+2013-12-10T22:27:12.631761Z
+b2637a60ff5c3df223bd23fe0adecada
+2013-12-10T22:24:11.880230Z
+1
+santosh
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1097
+
+removeDuplicates
+dir
+
+README.txt
+file
+
+
+
+
+2013-12-10T22:27:12.640761Z
+222c379ea3157361533b0bf7692b8d82
+2013-12-10T22:24:11.880230Z
+1
+santosh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5340
+
+createMetaTxtXmlFiles
+dir
+

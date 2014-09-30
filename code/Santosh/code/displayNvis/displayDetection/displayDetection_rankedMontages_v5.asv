@@ -1,0 +1,97 @@
+function displayDetection_rankedMontages_v5(cls, testset, cachedir, year, suffix)
+% from displayDetection_rankedMontages
+
+try
+
+global VOC_CONFIG_OVERRIDE;
+%VOC_CONFIG_OVERRIDE = @my_voc_config_override;
+VOC_CONFIG_OVERRIDE.paths.model_dir = cachedir;
+VOC_CONFIG_OVERRIDE.pascal.year = year;
+conf = voc_config('pascal.year', year, 'eval.test_set', testset);
+VOCopts  = conf.pascal.VOCopts;
+
+detressavedir = [cachedir '/display/']; mymkdir(detressavedir);
+ids = textread(sprintf(VOCopts.imgsetpath, testset), '%s');
+
+nImgMont = 49;
+totalNimg = 200;
+intensty = [255 0 0];
+ftag ='all';
+
+
+load([cachedir cls '_boxes_' testset '_' suffix '.mat'], 'ds', 'bs');
+%load([cachedir cls '_pr_' testset '_' suffix '.mat'], 'recall', 'prec', 'ap');
+try load([cachedir cls '_pr_' testset '_' suffix '.mat'], 'labels', 'olap');
+catch labels = []; end
+%{
+[bbox, scores, comps, allIds] = deal(cell(length(ids),1));
+for i = 1:length(ids)
+    if ~isempty(ds{i})
+        bbox{i} = ds{i}(:,1:4);
+        scores{i} = ds{i}(:,end);
+        comps{i} = bs{i}(:,end-1);
+        allIds{i} = repmat(i, [size(ds{i},1) 1]); %j*ones(length(result(j).scores),1)
+    end
+end
+% get sorted inds
+allScores = cat(1, scores{:});
+allComps = cat(1, comps{:});
+imgIds = cat(1,allIds{:});
+bboxes = cat(1,bbox{:});
+%}
+
+[imgIds, bboxes, allScores, allComps] = deal([]);
+for i = 1:length(ids);
+    bbox = ds{i};
+    pbox = bs{i};
+    for j = 1:size(bbox,1)
+        %fprintf(fid, '%s %f %d %d %d %d\n', ids{i}, bbox(j,end), bbox(j,1:4));
+       imgIds = [imgIds; ids{i}];
+       bboxes = [bboxes; box(j,1:4)];
+       allScores = [allScores; box(j,end)];
+       allComps = [allComps; pbox(j,end-1)];
+    end
+end
+if 
+
+
+
+disp(' displaying results');
+[allScores, sInds] = sort(allScores, 'descend');
+imgIds = imgIds(sInds, :);
+bboxes = bboxes(sInds, :);
+allComps = allComps(sInds, :);
+
+%resimg = cell(nImgMont,1); ressc = cell(nImgMont,1);
+resimg = [];
+ressc = [];
+k = 1;
+for j=1:min(totalNimg,length(imgIds))
+    myprintf(j);
+    %imgname = [imgannodir '/JPEGImages/' ids{imgIds(j)} '.jpg']; 
+    imgname = [VOCopts.imgpath(1:end-6) '/' ids{imgIds(j)} '.jpg'];
+    resimg{k,1} = draw_box_image(color(imread(imgname)), bboxes(j,:), intensty);
+    ressc{k,1} = [num2str(allScores(j), '%1.3f') ' ' num2str(allComps(j))];
+    ressc{k,2} = strrep(ids{imgIds(j)}, '_', '-');
+    if k == nImgMont
+       mimg = montage_list_w_text2L(resimg, ressc, 2, [], [1 1 1], [2000 2000 3]);
+       imwrite(mimg, [detressavedir '/' ftag '_' num2str(j-nImgMont+1, '%03d') '-' num2str(j, '%03d') '.jpg']);
+       k=1;
+       clear resimg ressc;
+       continue;
+    else
+    k = k+1;
+    end
+end
+myprintfn;
+
+% plotfname = [detressavedir '/roc_' ftag '.jpg']; 
+% %if ~exist(plotfname,'file') 
+%     disp('printing roc plot');
+%     plotROC(roc);
+%     saveas(gcf, plotfname);
+% %end
+
+catch
+    disp(lasterr); keyboard;
+end
