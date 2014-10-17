@@ -30,10 +30,11 @@ year = '2007'; set = 'train';
 
 
 %% Per Subcategory
-subcat = {'tang_horse_super 2','eye_horse_super 2','saddlebred_horse_super 6','morgan_horse_super 2','jennet_horse_super 1','sled_horse_super 1', ...
- 'racing_horse_super 5','reining_horse 1','gallop_horse_super 6','pleasure_horse_super 1','barrel_horse 1','hunter_horse_super 2', ... 
- 'hunter_horse_super 3','portrait_horse_super 1','portrait_horse_super 3','endurance_horse_super 2','pull_horse_super 6','pacing_horse 2', ... 
- 'three_horse_super 5','winkle_horse_super 1','ass_horse 4','face_horse_super 4','ears_horse_super 6','fight_horse_super 6'};
+{'tang_horse_super 2';'eye_horse_super 2';'saddlebred_horse_super 6';'morgan_horse_super 2';'jennet_horse_super 1';'sled_horse_super 1'; ...
+ 'racing_horse_super 5';'reining_horse 1';'gallop_horse_super 6';'pleasure_horse_super 1';'barrel_horse 1';'hunter_horse_super 2';'
+{'hunter_horse_super 3';'portrait_horse_super 1';'portrait_horse_super 3';'endurance_horse_super 2';'pull_horse_super 6';'pacing_horse 2';}
+{'three_horse_super 5';'winkle_horse_super 1';'ass_horse 4';'face_horse_super 4';'ears_horse_super 6';}
+{'fight_horse_super 6';}
 
 list_sub_selected = [2,9,14,27,31,29,33,34,38,44,46,50,51,54,55,59,78,85,109,121,136,142,165, 170];
 

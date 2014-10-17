@@ -103,12 +103,12 @@ if top_num_img >0
       
 end
         
-     category = 'horse';
-     dir_class = 'mountain_horse_super';
-     component = 1;    
-    savehere = ['/home/moin/Desktop/UW/all_UW/eccv14/data/part_selected/',category,'/',dir_class,'/',num2str(component),'/'];
-    mkdir([savehere,'figures/']);
-    saveas(gcf, [savehere,'figures/','detectedPatches_part_fixedpos',num2str(part),'-elda.png']);
-    close all;
+%      category = 'horse';
+%      dir_class = 'mountain_horse_super';
+%      component = 1;    
+%     savehere = ['/home/moin/Desktop/UW/all_UW/eccv14/data/part_selected/',category,'/',dir_class,'/',num2str(component),'/'];
+%     mkdir([savehere,'figures/']);
+%     saveas(gcf, [savehere,'figures/','detectedPatches_part_fixedpos',num2str(part),'-elda.png']);
+%     close all;
 end
 
