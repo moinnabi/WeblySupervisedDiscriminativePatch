@@ -7,10 +7,11 @@ clear all;
 addpath('/homes/grail/moinnabi/cvpr_2015_git/cvpr_2015/code/');
 
 addpath('Santosh/');
+addpath(genpath('dpm-voc-release5/'));
 addpath(genpath('bcp_release/'));
 run bcp_release/setup.m
 run bcp_release/startup;
-addpath(genpath('dpm-voc-release5/'));
+
 
 %Category Parameters
 category = 'horse';
