@@ -26,7 +26,7 @@ list_sub = model_tmp.model.phrasenames;
 voc_dir = '/projects/grail/santosh/Datasets/Pascal_VOC/';
 
 year = '2007'; set = 'train'; 
-[voc_ps_train, voc_ng_train] = VOC_load(category,year,set,voc_dir);
+[VOCopts, voc_ps_train, voc_ng_train] = VOC_load(category,year,set,voc_dir);
 
 
 
@@ -52,7 +52,7 @@ for sub_ind = 1:length(list_sub_selected)%length(list_sub)
     top_num_part = 25;
     posscores_thresh = -1;
 
-    datafname = [finalresdir 'imgdata_17oct14_' num2str(numPatches) '.mat'];
+    datafname = [finalresdir 'imgdata_20oct14_' num2str(numPatches) '.mat'];
 %     try
 %         load(datafname, 'ps','patch_per_comp','w_sel');
 %     catch

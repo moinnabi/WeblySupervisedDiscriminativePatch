@@ -5,7 +5,7 @@ function [patch_per_comp] = subcategory_patch_discovery(VOCopts, ps, numPatches,
  
 %Select random "patches" on each Positive image (belongs to this subcategory)
 disp('auto_get_part_fast');
-[I bbox gtbox] = auto_get_part_fast(VOCopts, ps, numPatches,0.25,0.75);
+[I bbox gtbox] = auto_get_part_fast(ps, numPatches,0.25,0.75);
 
 %Find relative position and Deformation Parameter for each Query patch
 for i = 1:numPatches

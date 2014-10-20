@@ -1,17 +1,16 @@
-function [VOCopts, voc_ps, voc_ng] = VOC_load(cls,year,set,voc_dir)
+function [voc_ps, voc_ng] = VOC_load(cls,year,set,voc_dir)
 
 %Initial parameter
-%IIT% VOC_root = [voc_dir,'VOC',year,'/VOCdevkit'];
-%IIT %run([VOC_root '/VOCinit.m']);
+VOC_root = [voc_dir,'VOC',year,'/VOCdevkit'];
+%addpath([VOC_root '/VOCcode']);
+run([VOC_root '/VOCinit.m']);
+%VOCinit; %set for 2007
+%year = '2007';
+% i =13; %horse
+% cls=VOCopts.classes{i};
 
-% VOC Parameter
-clear VOCopts;
-VOC_root = [voc_dir,'VOC',year]; %UW%
-
-VOCopts.clsimgsetpath = [VOC_root, '/ImageSets/Main/%s_%s.txt'];
-VOCopts.imgpath = [VOC_root, '/JPEGImages/%s.jpg'];
-VOCopts.annopath=[VOC_root, '/Annotations/%s.xml'];
-VOCopts.imgsetpath=[VOC_root, '/ImageSets/Main/%s.txt'];
+VOCopts.clsimgsetpath = ['ImageSets/Main/%s_%s.txt']
+VOCopts.imgpath
 
 
 %Load Positive

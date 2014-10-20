@@ -1,4 +1,4 @@
-function [I, bbox, gtbox] = auto_get_part(params, stream, amount,percent_min,percent_max,num_candidates)
+function [I, bbox, gtbox] = auto_get_part_fast(stream, amount,percent_min,percent_max)
 % [I, bbox] = auto_get_part(params, stream, amount, num_candidates)
 %
 % Automatically get a part, given a cell array of images/bboxes.
@@ -26,13 +26,13 @@ end
 try
     
     if amount == 1  % If only one part is requested, return the image and bbox directly.
-        [I, bbox] = auto_get_single_part(params, stream,percent_min,percent_max);
+        [I, bbox] = auto_get_single_part(stream,percent_min,percent_max);
     else  % Otherwise, return the images and bboxes in corresponding cell arrays.
         I = cell(1, amount);
         bbox = cell(1, amount);
         gtbox = cell(1, amount);
         for i = 1:amount
-            [I1, bbox1, gt_bbox1] = auto_get_single_part(params, stream,percent_min,percent_max);
+            [I1, bbox1, gt_bbox1] = auto_get_single_part(stream,percent_min,percent_max);
             I{i} = I1;
             bbox{i} = bbox1;
             gtbox{i} = gt_bbox1;
@@ -43,7 +43,7 @@ catch
 end
 
 %%%%%%%%%%%%%%%%%%
-function [I, bbox, gt_bbox] = auto_get_single_part(params, stream,percent_min,percent_max)
+function [I, bbox, gt_bbox] = auto_get_single_part(stream,percent_min,percent_max)
 % Choose a random image and bbox from stream. Since each bbox in rec.bbox
 % is in a separate row, we choose a random row from rec.bbox.
 
