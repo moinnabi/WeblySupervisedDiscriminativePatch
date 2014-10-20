@@ -3,8 +3,9 @@
 %% Parameter Setting and system configuation
 %addpath
 clear all;
-addpath('/home/moin/Desktop/UW/all_UW/cvpr_2015/code/'); % CHANGE!!!
-%UW% addpath('/homes/grail/moinnabi/cvpr_2015/code/')
+%IIT% addpath('/home/moin/Desktop/UW/all_UW/cvpr_2015/code/'); % CHANGE!!!
+addpath('/homes/grail/moinnabi/cvpr_2015_git/cvpr_2015/code/');
+
 addpath('Santosh/');
 addpath(genpath('bcp_release/'));
 run bcp_release/setup.m
@@ -13,16 +14,16 @@ addpath(genpath('dpm-voc-release5/'));
 
 %Category Parameters
 category = 'horse';
-dir_main = ['../data/ngram_models/',category,'/kmeans_6/'];  % CHANGE!!!
-%UW% dir_main = ['/projects/grail/santosh/objectNgrams/results/ngram_models/',category,'/kmeans_6/'];
+%IIT% dir_main = ['../data/ngram_models/',category,'/kmeans_6/'];  % CHANGE!!!
+dir_main = ['/projects/grail/santosh/objectNgrams/results/ngram_models/',category,'/kmeans_6/'];
 model_tmp = load([dir_main,'baseobjectcategory_horse_SNN_buildTree_Comp/baseobjectcategory_horse_joint.mat'],'model');
 poscell_tmp = load([dir_main,'baseobjectcategory_horse_SNN_buildTree_Comp/baseobjectcategory_horse_joint.mat'],'poscell');
 posdata_tmp = load([dir_main,'baseobjectcategory_horse_SNN_buildTree_Comp/baseobjectcategory_horse_joint.mat'],'posdata');
 list_sub = model_tmp.model.phrasenames;
 
 %VOC setup
-voc_dir = '/home/moin/datasets/PASCALVOC/'; % CHANGE!!!
-%UW% voc_dir = '???';
+%IIT% voc_dir = '/home/moin/datasets/PASCALVOC/'; % CHANGE!!!
+voc_dir = '/projects/grail/santosh/Datasets/Pascal_VOC/';
 
 year = '2007'; set = 'train'; 
 [voc_ps_train, voc_ng_train] = VOC_load(category,year,set,voc_dir);
@@ -58,7 +59,7 @@ for sub_ind = 1:length(list_sub_selected)%length(list_sub)
         ps = load_component_data(dir_data,dir_class,posscores_thresh,component);
         
         %This line is just to run on IIT PC (updating address by the local directroy, NOT required for UW)
-        for i=1:length(ps) ps{i}.I = ['/home/moin/Desktop/UW/all_UW/cvpr_2015/data/images/',ps{i}.I(end-15:end)]; end;
+        %for i=1:length(ps) ps{i}.I = ['/home/moin/Desktop/UW/all_UW/cvpr_2015/data/images/',ps{i}.I(end-15:end)]; end;
 
         %Subcategory-based atch discovery (MAIN FUNCTION)
         patch_per_comp = subcategory_patch_discovery(VOCopts, ps, numPatches,dir_class,dir_neg,voc_ng_train,category,component,top_num_part,[1,1]);

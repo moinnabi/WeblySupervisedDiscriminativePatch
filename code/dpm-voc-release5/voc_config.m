@@ -19,7 +19,8 @@ function conf = voc_config(varargin)
 % Please read the next few lines
 
 % Parent directory that everything (model cache, VOCdevkit) is under
-BASE_DIR    = '/home/moin/datasets/PASCALVOC/';
+%IIT% BASE_DIR    = '/home/moin/datasets/PASCALVOC/';
+BASE_DIR    = '/projects/grail/santosh/Datasets/Pascal_VOC/';
 
 % PASCAL dataset year to use
 PASCAL_YEAR = '2007';
