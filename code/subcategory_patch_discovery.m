@@ -74,16 +74,16 @@ disp('Patch selection for each subcategory');
 
 
 %% Retraining the Patch Models Using Linear SVM / Latent-SVM / Latent-LDA
-sel_ind = find(patch_selected);
+%sel_ind = find(patch_selected);
 
 model_retrained = models_all;
-for i = 1:length(sel_ind)
-    disp(['Re-training ', int2str(i),' / ',int2str(length(sel_ind))]);
-    patch_ind = sel_ind(i);
-%    model_retrained{patch_ind} = retrain_patch_svm(ps,voc_ng_train,ps_detect,ng_detect,patch_ind)
-%    model_retrained{patch_ind} = retrain_patch_lsvm(ps,voc_ng_train,ps_detect,ng_detect,patch_ind,80,0);
-    model_retrained{patch_ind} = retrain_patch_llda(ps,ps_detect,ng_detect,patch_ind,50);
-end
+%for i = 1:length(sel_ind)
+%    disp(['Re-training ', int2str(i),' / ',int2str(length(sel_ind))]);
+%    patch_ind = sel_ind(i);
+%   % model_retrained{patch_ind} = retrain_patch_svm(ps,voc_ng_train,ps_detect,ng_detect,patch_ind)
+%   % model_retrained{patch_ind} = retrain_patch_lsvm(ps,voc_ng_train,ps_detect,ng_detect,patch_ind,80,0);
+%    model_retrained{patch_ind} = retrain_patch_llda(ps,ps_detect,ng_detect,patch_ind,50);
+%end
 
 
 %% selected models

@@ -22,7 +22,7 @@ function model = root_model_santosh(cls, pos, note, sbin, sz)
 % change area = areas(floor(length(areas) * 0.2)); to area = areas(pickind);  
 
 %3 next following line by Moin
-addpath(genpath('dpm-voc-release5/'));
+addpath(genpath('Santosh/code/other_codes/voc-release5/'));
 conf = voc_config();
 addpath(genpath('llda-dpm-release/'));
 

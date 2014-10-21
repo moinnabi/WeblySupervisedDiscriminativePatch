@@ -14,7 +14,7 @@ patch_precision = zeros(1,n_part);
 
 for prt = 1:n_part
     [~,prec_ps_sortIndex_img] = sort([ps_score(:,prt);ng_score(:,prt)],'descend');
-    tp = length(find(prec_ps_sortIndex_img(1:2*n_img*precision_thersh) <= n_img));
+    tp = length(find(prec_ps_sortIndex_img(1:uint16(2*n_img*precision_thersh)) <= n_img));
     fp = 2*n_img*precision_thersh - tp;
     patch_precision(1,prt) = tp/(tp+fp);
 end

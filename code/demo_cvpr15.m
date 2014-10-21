@@ -3,8 +3,10 @@
 %% Parameter Setting and system configuation
 %addpath
 clear all;
+cdr = cd;
+addpath([cdr,'/']);
 %IIT% addpath('/home/moin/Desktop/UW/all_UW/cvpr_2015/code/'); % CHANGE!!!
-addpath('/homes/grail/moinnabi/cvpr_2015_git/cvpr_2015/code/');
+%addpath('/homes/grail/moinnabi/cvpr_2015_git/cvpr_2015/code/');
 
 addpath('Santosh/');
 addpath(genpath('dpm-voc-release5/'));
@@ -24,7 +26,7 @@ list_sub = model_tmp.model.phrasenames;
 
 %VOC setup
 %IIT% voc_dir = '/home/moin/datasets/PASCALVOC/'; % CHANGE!!!
-voc_dir = '/projects/grail/santosh/Datasets/Pascal_VOC/';
+voc_dir = '/projects/grail/moinnabi/datasets/PASCALVOC/';
 
 year = '2007'; set = 'train'; 
 [VOCopts, voc_ps_train, voc_ng_train] = VOC_load(category,year,set,voc_dir);
