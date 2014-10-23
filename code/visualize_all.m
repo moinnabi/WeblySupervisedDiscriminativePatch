@@ -1,4 +1,4 @@
-function visualize_all(ps,patch_per_comp,voc_ng_train,type)
+function visualize_all(ps,patch_per_comp,voc_ng_train,type,category,dir_class,component)
 
 %reloading
 I=patch_per_comp.I; bbox=patch_per_comp.bbox; gtbox=patch_per_comp.gtbox;
@@ -33,7 +33,7 @@ maxIndex_part = sortIndex_part(1:top_num_part);
 
 switch type
     case 1 %Visualize 
-        %close all; 
+        close all; 
         figure; clf; 
         part_selected_ind = find(patch_selected); 
         for part=1:min(25,length(part_selected_ind))
@@ -41,13 +41,13 @@ switch type
             subplot(sqrt(25),sqrt(25),part); showboxes(imread(I{pa}), [bbox{pa}(1:4); gtbox{pa}]); 
             str1 = {['DIS:',num2str(disc_score(pa),2),',REP:',num2str(rep_score(pa),2)]}; text(1,1,str1)
         end
-%         savehere = ['/projects/grail/moinnabi/eccv14/data/part_selected/',category,'/',dir_class,'/',num2str(component),'/'];
-%         mkdir([savehere,'figures/']);
-%         saveas(gcf, [savehere,'figures/','queryPatches_.jpg']);
+         savehere = ['/projects/grail/moinnabi/cvpr15/cvpr_2015/data/part_selected/',category,'/',dir_class,'/',num2str(component),'/'];
+         mkdir([savehere,'figures/']);
+         saveas(gcf, [savehere,'figures/','queryPatches_.jpg']);
 %close all;
     case 2 
         for part = 1:top_num_part
-            %close all;
+            close all;
             pa = maxIndex_part(part);
             %pa = sortIndex_part(part);
         % for pa = 1:numPatches
@@ -85,8 +85,11 @@ switch type
                     showboxes(img,part_bbox); rectangle('Position',[1,1,size(img,2),size(img,1)],'EdgeColor','y','linewidth', 3);
                 end
             end
-%             savehere = ['/projects/grail/moinnabi/eccv14/data/part_selected/',category,'/',dir_class,'/',num2str(component),'/'];
-%             mkdir([savehere,'figures/']);
-%             saveas(gcf, [savehere,'figures/','detectedPatches_part_fixedpos',num2str(part),'.png']);
+             savehere = ['/projects/grail/moinnabi/cvpr15/cvpr_2015/data/part_selected/',category,'/',dir_class,'/',num2str(component),'/'];
+             mkdir([savehere,'figures/']);
+             saveas(gcf, [savehere,'figures/',sprintf('detectedPatches_part_fixedpos_%-2.3d', part),'.png']);
         end
 end
+%scp moinnabi@robson.cs.washington.edu:/projects/grail/moinnabi/cvpr15/cvpr_2015/data/part_selected/horse/tang_horse_super/2/figures/detectedPatches_part_fixedpos_001.png /home/moin/Desktop/
+
+

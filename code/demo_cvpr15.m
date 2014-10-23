@@ -27,21 +27,23 @@ list_sub = model_tmp.model.phrasenames;
 %VOC setup
 %IIT% voc_dir = '/home/moin/datasets/PASCALVOC/'; % CHANGE!!!
 voc_dir = '/projects/grail/moinnabi/datasets/PASCALVOC/';
+%voc_dir = '/homes/grail/moinnabi/datasets/PASCALVOC/';
 
 year = '2007'; set = 'train'; 
-[VOCopts, voc_ps_train, voc_ng_train] = VOC_load(category,year,set,voc_dir);
+run([voc_dir,'VOC',year,'/VOCdevkit/VOCinit.m']);
+
+[voc_ps_train, voc_ng_train] = VOC_load(VOCopts,category,year,set,voc_dir);
 
 
 
 %% Per Subcategory
-subcat = {'tang_horse_super 2','eye_horse_super 2','saddlebred_horse_super 6','morgan_horse_super 2','jennet_horse_super 1','sled_horse_super 1', ...
- 'racing_horse_super 5','reining_horse 1','gallop_horse_super 6','pleasure_horse_super 1','barrel_horse 1','hunter_horse_super 2', ... 
- 'hunter_horse_super 3','portrait_horse_super 1','portrait_horse_super 3','endurance_horse_super 2','pull_horse_super 6','pacing_horse 2', ... 
- 'three_horse_super 5','winkle_horse_super 1','ass_horse 4','face_horse_super 4','ears_horse_super 6','fight_horse_super 6'};
+subcat = {'mountain_horse_super','tang_horse_super 2','eye_horse_super 2','saddlebred_horse_super 6','morgan_horse_super 2','jennet_horse_super 1', ...
+ 'reining_horse 1','pleasure_horse_super 1','hunter_horse_super 2', 'hunter_horse_super 3','portrait_horse_super 1','pacing_horse 2', ... 
+ 'winkle_horse_super 1'};
 
-list_sub_selected = [2,9,14,27,31,29,33,34,38,44,46,50,51,54,55,59,78,85,109,121,136,142,165, 170];
+list_sub_selected = [77,2,9,14,27,31,34,44,50,51,54,85,121];
 
-for sub_ind = 1:length(list_sub_selected)%length(list_sub)
+for sub_ind = 20:length(list_sub_selected)%length(list_sub)
     
     % 
     sub_index = list_sub_selected(sub_ind); %77; %dir_class = 'mountain_horse_super';
@@ -58,19 +60,21 @@ for sub_ind = 1:length(list_sub_selected)%length(list_sub)
     datafname = [finalresdir 'imgdata_20oct14_' num2str(numPatches) '.mat'];
 %     try
 %         load(datafname, 'ps','patch_per_comp','w_sel');
+	load(datafname, 'ps','patch_per_comp');
+
 %     catch
-        ps = load_component_data(dir_data,dir_class,posscores_thresh,component);
+ %       ps = load_component_data(dir_data,dir_class,posscores_thresh,component);
         
         %This line is just to run on IIT PC (updating address by the local directroy, NOT required for UW)
         %for i=1:length(ps) ps{i}.I = ['/home/moin/Desktop/UW/all_UW/cvpr_2015/data/images/',ps{i}.I(end-15:end)]; end;
 
         %Subcategory-based atch discovery (MAIN FUNCTION)
-        patch_per_comp = subcategory_patch_discovery(VOCopts, ps, numPatches,dir_class,dir_neg,voc_ng_train,category,component,top_num_part,[1,1]);
-
+%        patch_per_comp = subcategory_patch_discovery(VOCopts, ps, numPatches,dir_class,dir_neg,voc_ng_train,category,component,top_num_part,[0,0]);
+	
         % Patch Calibration
-        [w_sel] = patch_calibration_subcategory(patch_per_comp,dir_data,component,voc_dir);
-
-        save(datafname, 'ps','patch_per_comp','w_sel');
+        [w_sel] = patch_calibration_subcategory(patch_per_comp,dir_data,component,voc_dir,dir_class);
+	save(datafname, 'ps','patch_per_comp','w_sel');
+%        save(datafname, 'ps','patch_per_comp');
 %    end
 end
 

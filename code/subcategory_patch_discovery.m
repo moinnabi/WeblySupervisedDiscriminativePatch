@@ -129,10 +129,10 @@ type = find(vis_type);
 if ~isempty(type)
     if length(type) == 1
         type_i = type;
-        visualize_all(ps,patch_per_comp,voc_ng_train,type_i);
+        visualize_all(ps,patch_per_comp,voc_ng_train,type_i,category,dir_class,component);
     else
         for type_i = 1:length(type)
-            visualize_all(ps,patch_per_comp,voc_ng_train,type_i);
+            visualize_all(ps,patch_per_comp,voc_ng_train,type_i,category,dir_class,component);
         end
     end
 end

@@ -51,10 +51,10 @@ parfor img =1 : length(selected_images)
 
     
 % USIGN D. HOIM CODE (implemented in UW) -> before retraining by Latent LDA
-%     addpath(genpath('bcp_release/'));
-%     [detection_loc , ap_score , sp_score ] = part_inference_inbox(im_current, model_selected, bbox_current);
+     addpath(genpath('bcp_release/'));
+     [detection_loc , ap_score , sp_score ] = part_inference_inbox(im_current, model_selected, bbox_current);
 
-    [~ , ap_score , sp_score ] = part_inference_inbox_IIT(im_current, model_selected, bbox_current);
+%FOR LLDA%    [~ , ap_score , sp_score ] = part_inference_inbox_IIT(im_current, model_selected, bbox_current);
    
 
 
