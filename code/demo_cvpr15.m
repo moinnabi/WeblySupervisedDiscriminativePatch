@@ -57,6 +57,7 @@ for sub_ind = 1:length(list_sub_selected)%length(list_sub)
     top_num_part = 25;
     posscores_thresh = -1;
 
+    %datafname = [finalresdir 'imgdata_23sep14_' num2str(numPatches) '.mat'];
     datafname = [finalresdir 'imgdata_20oct14_' num2str(numPatches) '.mat'];
 %     try
 %         load(datafname, 'ps','patch_per_comp','w_sel');
@@ -70,10 +71,12 @@ for sub_ind = 1:length(list_sub_selected)%length(list_sub)
 
         %Subcategory-based atch discovery (MAIN FUNCTION)
 %        patch_per_comp = subcategory_patch_discovery(VOCopts, ps, numPatches,dir_class,dir_neg,voc_ng_train,category,component,top_num_part,[0,0]);
-	
+        fig_dir = [finalresdir,'displayPatches/'];
+        vizualize_patch(ps,patch_per_comp,voc_ng_train,fig_dir);
+    	
         % Patch Calibration
-        [w_sel] = patch_calibration_subcategory(patch_per_comp,dir_data,component,voc_dir,dir_class);
-	save(datafname, 'ps','patch_per_comp','w_sel');
+%        [w_sel] = patch_calibration_subcategory(patch_per_comp,dir_data,component,voc_dir,dir_class);
+%	save(datafname, 'ps','patch_per_comp','w_sel');
 %        save(datafname, 'ps','patch_per_comp');
 %    end
 end
