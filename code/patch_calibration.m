@@ -1,4 +1,4 @@
-function [ w_sel ] = patch_calibration(patch_per_comp,matfile,cellfile,component,voc_dir)
+function [ w_sel ] = patch_calibration(patch_per_comp,matfile,cellfile,component,voc_dir,voc9990_dir)
 
 % This function is for calibrating the score of different patch models on a
 % validation set provided by VOC 9990
@@ -31,7 +31,7 @@ parfor img =1 : length(selected_images)
     img
     switch selected_label(img)
         case 1
-            adrs = [voc_dir,'VOC9990/JPEGImages/'];
+            adrs = [voc9990_dir,'VOC9990/JPEGImages/'];
         case -1
             adrs = [voc_dir,'VOC2007/VOCdevkit/VOC2007/JPEGImages/'];
         otherwise
