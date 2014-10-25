@@ -43,7 +43,7 @@ subcat = {'mountain_horse_super','tang_horse_super 2','eye_horse_super 2','saddl
 
 list_sub_selected = [77,2,9,14,27,31,34,44,50,51,54,85,121];
 
-for sub_ind = 1:length(list_sub_selected)%length(list_sub)
+for sub_ind = 6:length(list_sub_selected)%length(list_sub)
     
     % 
     sub_index = list_sub_selected(sub_ind); %77; %dir_class = 'mountain_horse_super';

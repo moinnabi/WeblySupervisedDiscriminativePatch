@@ -2,7 +2,8 @@ function showbox_color(im,bbox,color,width,style,transparent)
 %by Moin Nabi
 bbox_num = size(bbox,1);
 if ~transparent
-    imshow(im);
+%    imshow(im);
+    showboxes(im,[1 1 1 1]);
     hold;
 else
     hold;
