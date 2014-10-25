@@ -17,7 +17,7 @@ function aveImg = getAveImage(part,im_crop,vis_flg)
     end
     aveImg = sumImg / length(im_crop);
     if vis_flg
-        subplot(figsize,figsize,4); showboxes(uint8(aveImg),[1 1 1 1]); %imshow(uint8(aveImg));
+        subplot(figsize,figsize,4); showboxes(uint8(aveImg),[0 0 0 0]); %imshow(uint8(aveImg));
         
 %         category = 'horse';
 %         dir_class = 'mountain_horse_super';

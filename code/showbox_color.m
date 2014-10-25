@@ -3,7 +3,7 @@ function showbox_color(im,bbox,color,width,style,transparent)
 bbox_num = size(bbox,1);
 if ~transparent
 %    imshow(im);
-    showboxes(im,[1 1 1 1]);
+    showboxes(im,[0 0 0 0]);
     hold;
 else
     hold;

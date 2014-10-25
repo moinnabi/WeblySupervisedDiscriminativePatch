@@ -22,7 +22,7 @@ end
 %disp('checking Moins parts inside box');
 try
     %load('data/scores_all_rescored.mat','scores_all_rescored');  
-    load(['../data/result/',suffix,'.mat'],'scores_all_moinONsantosh','ds_moinONsantosh');
+    load(['../data/result/',suffix,'.mat']),'scores_all_moinONsantosh','ds_moinONsantosh');
 catch
     parfor i = 1:length(ds_santosh)%length(voc_test)
         disp([int2str(i),'/',int2str(length(voc_test))])
@@ -32,9 +32,8 @@ catch
             im_current = imread(voc_test(i).im);
             gt_bbox_all = ds_santosh{i}(:,1:4);
             
-%            tmp = compute_score_per_sample_IIT(ds_santosh{i},gt_bbox_all,relpos_patch_normal_selected,im_current, model_selected);
-            addpath(genpath('bcp_release/'));
-            tmp = compute_score_per_sample(ds_santosh{i},gt_bbox_all,relpos_patch_normal_selected,im_current, model_selected)
+            tmp = compute_score_per_sample_IIT(ds_santosh{i},gt_bbox_all,relpos_patch_normal_selected,im_current, model_selected);
+%            tmp = compute_score_per_sample(ds_santosh{i},gt_bbox_all,relpos_patch_normal_selected,im_current, model_selected)
             
             scores_all_moinONsantosh{i} = tmp;
         end
