@@ -2,7 +2,7 @@ function [detection_score_part] = run_detection_on(model_all,dataset)
 % dataset should be stored in a cell
 disp('doing part inference');
 parfor i = 1:length(dataset)
-    disp([int2str(i),'/',int2str(length(dataset))])
+%    disp([int2str(i),'/',int2str(length(dataset))])
     im_current = imread(dataset(i).im);
     [im_h, im_w, ~] = size(im_current);
 %     ro = 0.07; %inspired by Santosh cvpr'14

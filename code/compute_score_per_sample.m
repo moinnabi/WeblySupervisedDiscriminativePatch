@@ -4,6 +4,8 @@ for j = 1:size(ds_img,1)
     gt_bbox = gt_bbox_all(j,:);
     bbox_current = inverse_relative_position_all(gt_bbox,relpos_patch_normal_selected,1);
     [~ , ap_score , sp_score ] = part_inference_inbox(im_current, model_selected, bbox_current);
+    
     score = (vertcat(ap_score{:}) .* vertcat(sp_score{:}))';
-    tmp(j,:) = score;
+   tmp(j,:) = score;
+    %tmp(j,:) = ones(1,25);
 end

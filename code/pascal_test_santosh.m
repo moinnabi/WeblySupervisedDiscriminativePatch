@@ -1,4 +1,4 @@
-function [ds_santosh] = pascal_test_santosh(voc_test,model_santosh,suffix)
+function [ds_santosh] = pascal_test_santosh(voc_test,model_santosh,finalresdir,suffix)
 
 %UW% addpath(genpath('/homes/grail/moinnabi/Matlab/dpm-voc-release5/'));
 addpath(genpath('dpm-voc-release5/'));
@@ -8,7 +8,7 @@ addpath(genpath('dpm-voc-release5/'));
 
 % run detector in each image
 try
-  load(['../data/result/ds_',suffix,'.mat'],'ds_santosh');
+  load([finalresdir,suffix,'.mat'],'ds_santosh');
 catch
   % parfor gets confused if we use VOCopts
   %opts = VOCopts;
@@ -16,9 +16,12 @@ catch
   num_ids = length(voc_test);
   ds_out = cell(1, num_ids);
   bs_out = cell(1, num_ids);
-  th = tic();
-  parfor i = 1:num_ids;
-    disp([num2str(i), ' / ' ,num2str(num_ids)]);
+%  th = tic();
+  disp('pascal_test_santosh');
+  
+  parfor i = 1:num_ids
+%    disp([num2str(i), ' / ' ,num2str(num_ids)]);
+
     im = imread(voc_test(i).im);
     [ds_santosh, bs] = imgdetect(im, model_santosh, model_santosh.thresh);
     if ~isempty(bs)
@@ -40,9 +43,9 @@ catch
       %bs_out{i} = [];
     end
   end
-  th = toc(th);
+%  th = toc(th);
   ds_santosh = ds_out;
   %bs = bs_out;
-  save(['../data/result/ds_',suffix,'.mat'],'ds_santosh');
+  save([finalresdir,suffix,'.mat'],'ds_santosh');
   %fprintf('Testing took %.4f seconds\n', th);
 end

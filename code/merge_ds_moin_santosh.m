@@ -1,4 +1,4 @@
-function [ds_santosh_moin] = merge_ds_moin_santosh(ds_moin,ds_santosh,thresh)
+function [ds_santosh_moin] = merge_ds_moin_santosh(ds_moin,ds_santosh,moin_thresh,santosh_thresh)
 
 addpath(genpath('bcp_release/'));
 
@@ -9,7 +9,7 @@ for i = 1:length(ds_moin)
     if ~isempty(ds_moin{i})
         ds_moin_sel = [];
          for j = 1:size(ds_moin{i},1)
-             if ds_moin{i}(j,5) ~= 0 && ds_moin{i}(j,5) > thresh
+             if ds_moin{i}(j,5) > moin_thresh
                  ds_moin_sel = [ds_moin_sel;ds_moin{i}(j,:)];
              end
          end
@@ -19,9 +19,9 @@ for i = 1:length(ds_moin)
      if ~isempty(ds_santosh{i})
         ds_santosh_sel = [];
          for j = 1:size(ds_santosh{i},1)
-             %if ds_santosh{i}(j,5) > thresh
+             if ds_santosh{i}(j,5) > santosh_thresh
                  ds_santosh_sel = [ds_santosh_sel;ds_santosh{i}(j,:)];
-             %end
+             end
          end         
      else
         ds_santosh_sel = [];
