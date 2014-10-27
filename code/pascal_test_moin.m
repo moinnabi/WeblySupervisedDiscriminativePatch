@@ -22,7 +22,7 @@ catch
     relpos_patch = relpos_patch_normal_selected;
     voc_detect = voc_test_detect;
     
-    parfor img=1:length(voc_detect)
+    for img=1:length(voc_detect)
         bbox_detected = [];
         score_detected = [];
         relpos_patch_detected = [];
@@ -36,14 +36,19 @@ catch
                 prt_ind = prt_ind+1;
             end
         end
-        gtbox_detected = inv_relpos_p2gt(bbox_detected,relpos_patch_detected);
+	
+	if size(bbox_detected,1) > 0
+		gtbox_detected = inv_relpos_p2gt(bbox_detected,relpos_patch_detected);
+        	pred = vertcat(gtbox_detected{:});
+	        score = score_detected';
+        	ds_moin_all{img} = [pred,score];
+	
+	else
 
-        pred = vertcat(gtbox_detected{:});
-        score = score_detected';
-
-        ds_moin_all{img} = [pred,score];
-
-    end
-      save(['data/result/ds_',suffix,'.mat'],'ds_moin_all');
+               ds_moin_all{img} = [];
+	end
+   end
+   
+   save(['data/result/ds_',suffix,'.mat'],'ds_moin_all');
 %end    
 end

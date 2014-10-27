@@ -2,7 +2,7 @@ cls = 'horse'; testset =  'test'; testyear = '2007';
 [voc_test,ids] = loadVOC_test(voc_dir,testyear,testset);
 
 
-for sub_ind = 2:length(list_sub_selected)%length(list_sub)
+for sub_ind = 2:6%length(list_sub_selected)%length(list_sub)
     
     % 
     sub_index = list_sub_selected(sub_ind); %77; %dir_class = 'mountain_horse_super';
@@ -17,8 +17,8 @@ for sub_ind = 2:length(list_sub_selected)%length(list_sub)
     load(datafname, 'ps','patch_per_comp','w_sel');
 
     % Santosh models
-    model_tmp = load(['../data/ngram_models/horse/kmeans_6/',dir_class,'/',dir_class,'_parts.mat'],'models');
-    %UW% model_tmp = load(['/projects/grail/santosh/objectNgrams/results/ngram_models/horse/kmeans_6/',dir_class,'/',dir_class,'_parts.mat'],'models');
+%    model_tmp = load(['../data/ngram_models/horse/kmeans_6/',dir_class,'/',dir_class,'_parts.mat'],'models');
+    model_tmp = load(['/projects/grail/santosh/objectNgrams/results/ngram_models/horse/kmeans_6/',dir_class,'/',dir_class,'_parts.mat'],'models');
     model_santosh = model_tmp.models{component};
     model_santosh_hyp = model_santosh;
     model_santosh_hyp.thresh = -1.5;
