@@ -2,7 +2,7 @@ cls = 'horse'; testset =  'test'; testyear = '2007';
 [voc_test,ids] = loadVOC_test(voc_dir,testyear,testset);
 
 
-for sub_ind = 2:6%length(list_sub_selected)%length(list_sub)
+for sub_ind = 2:3%length(list_sub_selected)%length(list_sub)
     
     % 
     sub_index = list_sub_selected(sub_ind); %77; %dir_class = 'mountain_horse_super';
@@ -42,7 +42,7 @@ for sub_ind = 2:6%length(list_sub_selected)%length(list_sub)
     [ds_moinONsantosh] = moin_rescoring_santosh(model_selected,relpos_patch_normal_selected,voc_test,ds_santoshANDmoin,w_sel,finalresdir,'moinONsantosh');
 
     resultname = [finalresdir 'result_20oct14_' num2str(numPatches) '.mat'];
-    save(resultname,'ds_santosh','ds_santosh_hype','ds_moin_median','ds_santoshANDmoin','ds_moinONsantosh','scores_all_moinONsantosh');
+    save(resultname,'ds_santosh','ds_santosh_hype','ds_moin_median','ds_santoshANDmoin','ds_moinONsantosh');
     
 end
 
