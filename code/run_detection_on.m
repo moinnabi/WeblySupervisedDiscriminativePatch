@@ -1,5 +1,6 @@
 function [detection_score_part] = run_detection_on(model_all,dataset)
 % dataset should be stored in a cell
+addpath(genpath('bcp_release/'));
 disp('doing part inference');
 parfor i = 1:length(dataset)
 %    disp([int2str(i),'/',int2str(length(dataset))])

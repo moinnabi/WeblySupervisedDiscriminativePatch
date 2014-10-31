@@ -2,9 +2,10 @@ cls = 'horse'; testset =  'test'; testyear = '2007';
 [voc_test,ids] = loadVOC_test(voc_dir,testyear,testset);
 
 
-for sub_ind = 2:3%length(list_sub_selected)%length(list_sub)
+for sub_ind = 10:length(list_sub_selected)%length(list_sub)
     
     % 
+    numPatches = 250;
     sub_index = list_sub_selected(sub_ind); %77; %dir_class = 'mountain_horse_super';
     dir_class = list_sub{sub_index}(1:end-2)
     component = str2num(list_sub{sub_index}(end-1:end));
