@@ -1,10 +1,7 @@
 % README.txt
-
-Hi Santosh
+% Implemented by Moin Nabi during visit in University of Washington
 
 The entrance to the code is "demo_cvpr15.m"
-
-Because of the very slow access to the Robson via SSH, I changed all the directories to the directories on my local PC at Italy (but still availible as comment), please uncomment them first, then run the code for a subcagegory and report me if you find any bug in the code.
 
 These are the main functions:
 
@@ -22,10 +19,3 @@ These are the main functions:
 	- retrain_patch_svm/retrain_patch_lsvm/retrain_patch_llda -> Retraining the Patch Models Using Linear SVM / Latent-SVM / Latent-LDA
 
 + patch_calibration_subcategory -> calibrate patches for each subcategory
-
-
-
-Please drop me a line if something is not clear in the code.
-
-Thanks,
-Moin
